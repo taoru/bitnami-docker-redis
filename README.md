@@ -64,7 +64,7 @@ For persistence you should mount a directory at the `/bitnami` path. If the moun
 ```bash
 $ docker run \
     -e ALLOW_EMPTY_PASSWORD=yes \
-    -v /path/to/redis-persistence:/bitnami \
+    -v /path/to/redis-persistence:/bitnami/redis \
     bitnami/redis:latest
 ```
 
@@ -81,7 +81,7 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - /path/to/redis-persistence:/bitnami
+      - /path/to/redis-persistence:/bitnami/redis
 ```
 
 # Connecting to other containers
@@ -332,7 +332,7 @@ services:
       - REDIS_REPLICATION_MODE=master
       - REDIS_PASSWORD=my_master_password
     volumes:
-      - '/path/to/redis-persistence:/bitnami'
+      - '/path/to/redis-persistence:/bitnami/redis'
 
   redis-slave:
     image: 'bitnami/redis:latest'
@@ -369,7 +369,7 @@ Run the Redis image, mounting a directory from your host.
 ```bash
 $ docker run --name redis \
     -e ALLOW_EMPTY_PASSWORD=yes \
-    -v /path/to/redis-persistence:/bitnami \
+    -v /path/to/redis-persistence:/bitnami/redis \
     bitnami/redis:latest
 ```
 
@@ -386,7 +386,7 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - /path/to/redis-persistence:/bitnami
+      - /path/to/redis-persistence:/bitnami/redis
 ```
 
 ### Step 2: Edit the configuration
